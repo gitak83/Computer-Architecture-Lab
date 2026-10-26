@@ -7,7 +7,8 @@ module ProgramCounter #(parameter SIZE = 32) (clk,rst,freeze,outval,inval);
     reg [SIZE - 1 : 0] outval_reg;
     always @(posedge clk,posedge rst) begin
         if(rst) outval_reg <= 0;
-        if(~freeze) outval_reg <= inval;
+        else if(freeze) outval_reg <= inval + 1;
+        else outval_reg <= inval;
     end
     
     assign outval = outval_reg;
