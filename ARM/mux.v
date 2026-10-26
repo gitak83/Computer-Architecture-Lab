@@ -3,5 +3,5 @@ module MUX (
     input wire sel, 
     output wire [31 : 0] mux_out);
 
-    assign mux_out = sel ? a : b;
+    assign mux_out = sel ? b : a;
 endmodule
