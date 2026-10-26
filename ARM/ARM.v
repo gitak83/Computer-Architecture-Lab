@@ -1,4 +1,4 @@
-module ARM(input clk, input rst, input );
+module ARM(input clk, input rst);
     wire [31:0] IF_pc, IF_instruction;
     wire [31:0] ID_pc, ID_instruction;
     wire [31:0] EXE_pc, MEM_pc, WB_pc;
