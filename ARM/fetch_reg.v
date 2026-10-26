@@ -4,4 +4,12 @@ module IF_Stage_Reg(
     output reg [31 : 0] PC, Instruction
 );
 
+    always @(posedge clk or posedge rst) begin
+        if (rst)
+            PC <= 32'b0
+        else
+            PC <= PC_in
+
+    end
+
 endmodule
