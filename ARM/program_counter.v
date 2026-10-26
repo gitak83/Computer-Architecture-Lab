@@ -6,8 +6,7 @@ module ProgramCounter(input wire clk,rst,freeze,
     reg [31 : 0] outval_reg;
     always @(posedge clk,posedge rst) begin
         if(rst) outval_reg <= 0;
-        else if(freeze) outval_reg <= inval + 1;
-        else outval_reg <= inval;
+        else if(~freeze) outval_reg <= inval + 1;
     end
     
     assign outval = outval_reg;
