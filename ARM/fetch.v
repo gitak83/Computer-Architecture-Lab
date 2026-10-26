@@ -5,7 +5,7 @@ module IF_Stage(
 );
 
 wire [31:0] mux_out;
-Mux mux2to1(PC, BranchAddr, Branch_taken, mux_out);
+MUX mux2to1(PC, BranchAddr, Branch_taken, mux_out);
 
 wire [31:0] pcoutval;
 ProgramCounter pcreg(clk, rst, freeze, mux_out, pcoutval);
