@@ -1,4 +1,4 @@
-module MUX #(
+module MUX (
     input wire [31 : 0] a, b, 
     input wire sel, 
     output wire [31 : 0] out);
