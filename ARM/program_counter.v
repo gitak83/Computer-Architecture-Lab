@@ -1,6 +1,7 @@
 module ProgramCounter(input wire clk,rst,freeze,
-                      output wire [31:0] outval,
-                      input wire [31:0] inval);
+                      input wire [31:0] inval,
+                      output wire [31:0] outval
+                      );
     
     reg [31 : 0] outval_reg;
     always @(posedge clk,posedge rst) begin
