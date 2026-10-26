@@ -1,10 +1,8 @@
-module ProgramCounter #(parameter SIZE = 32) (clk,rst,freeze,outval,inval);
-
-    input wire clk,rst,freeze;
-    input wire [SIZE - 1:0] inval;
-    output wire [SIZE - 1 : 0] outval;
+module ProgramCounter(input wire clk,rst,freeze,
+                      output wire [31:0] outval,
+                      input wire [31:0] inval);
     
-    reg [SIZE - 1 : 0] outval_reg;
+    reg [31 : 0] outval_reg;
     always @(posedge clk,posedge rst) begin
         if(rst) outval_reg <= 0;
         else if(freeze) outval_reg <= inval + 1;
