@@ -6,6 +6,7 @@ module ID_Stage (
     input [3:0] Dest_WB,
     input [31:0] Result_WB,
     input writeBackEN,
+    input [31:0] Instruction,
     output [31:0] Val_Rn,
     output [31:0] Val_Rm,
     output imm,
@@ -21,8 +22,7 @@ module ID_Stage (
     output [3:0] EXE_CMD,
     output uncond_MEM_R_EN,
     output uncond_MEM_W_EN,
-    output [31 : 0] PC,
-    input [31:0] Instruction,
+    output [31 : 0] PC
 );
 
     assign PC = PC_in;
