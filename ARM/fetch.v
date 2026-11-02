@@ -20,6 +20,4 @@ dist_mem_gen_0 inst_mem(
 );
 
 INC incrementor (pcoutval, PC);
-
-
 endmodule
