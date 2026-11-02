@@ -1,0 +1,104 @@
+vsim -gui work.ARM_tb
+# vsim -gui work.ARM_tb 
+# Start time: 17:05:01 on Oct 26,2026
+# Loading work.ARM_tb
+# Loading work.ARM
+# Loading work.IF_Stage
+# Loading work.MUX
+# Loading work.ProgramCounter
+# Loading work.dist_mem_gen_0
+# Loading work.dist_mem_gen_v8_0_12
+# Loading work.INC
+# Loading work.IF_Stage_Reg
+add wave -r sim:/ARM_tb/*
+run -all
+# WARNING: This core is supplied with a behavioral model. To model cycle-accurate behavior you must run timing simulation.
+# ** Warning: (vsim-7) Failed to open readmem file "dist_mem_gen_0.mif" in read mode.
+# No such file or directory. (errno = ENOENT)    : C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/dist_mem_gen_v8_0.v(234)
+#    Time: 0 ps  Iteration: 0  Instance: /ARM_tb/dut/IF/inst_mem/inst
+# ** Note: $finish    : C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/test.v(16)
+#    Time: 742 ns  Iteration: 0  Instance: /ARM_tb
+# 1
+# Break in Module ARM_tb at C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/test.v line 16
+# Compile of program_counter.v was successful.
+# Break key hit
+vsim -gui work.ARM_tb
+# End time: 17:10:10 on Oct 26,2026, Elapsed time: 0:05:09
+# Errors: 0, Warnings: 3
+# vsim -gui work.ARM_tb 
+# Start time: 17:10:10 on Oct 26,2026
+# Loading work.ARM_tb
+# Loading work.ARM
+# Loading work.IF_Stage
+# Loading work.MUX
+# Loading work.ProgramCounter
+# Loading work.dist_mem_gen_0
+# Loading work.dist_mem_gen_v8_0_12
+# Loading work.INC
+# Loading work.IF_Stage_Reg
+restart
+run
+# WARNING: This core is supplied with a behavioral model. To model cycle-accurate behavior you must run timing simulation.
+# ** Warning: (vsim-7) Failed to open readmem file "dist_mem_gen_0.mif" in read mode.
+# No such file or directory. (errno = ENOENT)    : C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/dist_mem_gen_v8_0.v(234)
+#    Time: 0 ps  Iteration: 0  Instance: /ARM_tb/dut/IF/inst_mem/inst
+run
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+vsim -gui work.ARM_tb
+# End time: 17:10:53 on Oct 26,2026, Elapsed time: 0:00:43
+# Errors: 0, Warnings: 1
+# vsim -gui work.ARM_tb 
+# Start time: 17:10:53 on Oct 26,2026
+# Loading work.ARM_tb
+# Loading work.ARM
+# Loading work.IF_Stage
+# Loading work.MUX
+# Loading work.ProgramCounter
+# Loading work.dist_mem_gen_0
+# Loading work.dist_mem_gen_v8_0_12
+# Loading work.INC
+# Loading work.IF_Stage_Reg
+add wave -r sim:/ARM_tb/*
+run
+# WARNING: This core is supplied with a behavioral model. To model cycle-accurate behavior you must run timing simulation.
+# ** Warning: (vsim-7) Failed to open readmem file "dist_mem_gen_0.mif" in read mode.
+# No such file or directory. (errno = ENOENT)    : C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/dist_mem_gen_v8_0.v(234)
+#    Time: 0 ps  Iteration: 0  Instance: /ARM_tb/dut/IF/inst_mem/inst
+run -all
+# ** Note: $finish    : C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/test.v(16)
+#    Time: 742 ns  Iteration: 0  Instance: /ARM_tb
+# 1
+# Break in Module ARM_tb at C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/test.v line 16
+# Compile of ARM.v was successful.
+# Compile of decode.v was successful.
+# Compile of execute.v was successful.
+# Compile of memory.v was successful.
+# Compile of write_back.v was successful.
+# Compile of pctest.v failed with 1 errors.
+# 6 compiles, 1 failed with 1 error.
+# Compile of pctest.v failed with 1 errors.
+# Compile of pctest.v failed with 1 errors.
+# Compile of ARM.v was successful.
+# Compile of mux.v was successful.
+# Compile of pctest.v failed with 1 errors.
+# 3 compiles, 1 failed with 1 error.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.ARM
+# Loading work.MUX
+# Loading work.ID_Stage
+# Loading work.ID_Stage_Reg
+# Loading work.MEM_Stage
+# Loading work.MEM_Stage_Reg
+# Loading work.WB_Stage
+# Loading work.WB_Stage_Reg
+run -all
+# WARNING: This core is supplied with a behavioral model. To model cycle-accurate behavior you must run timing simulation.
+# ** Warning: (vsim-7) Failed to open readmem file "dist_mem_gen_0.mif" in read mode.
+# No such file or directory. (errno = ENOENT)    : C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/dist_mem_gen_v8_0.v(234)
+#    Time: 0 ps  Iteration: 0  Instance: /ARM_tb/dut/IF/inst_mem/inst
+# ** Note: $finish    : C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/test.v(16)
+#    Time: 742 ns  Iteration: 0  Instance: /ARM_tb
+# 1
+# Break in Module ARM_tb at C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/test.v line 16
