@@ -21,8 +21,7 @@ module ID_Stage (
     output [3:0] EXE_CMD,
     output uncond_MEM_R_EN,
     output uncond_MEM_W_EN,
-    output [31 : 0] PC,
-    input [31:0] Instruction,
+    output [31 : 0] PC
 );
 
     assign PC = PC_in;
@@ -35,16 +34,18 @@ module ID_Stage (
     wire [3:0] Rd;
     wire [3:0] Rm;
 
-    assign cond   = Instruction[31:28];
-    assign Mode   = Instruction[27:26];
-    assign imm    = Instruction[25];
-    assign opcode = Instruction[24:21];
-    assign S      = Instruction[20];
-    assign Rn = Instruction[19:16];
-    assign Rd = Instruction[15:12];
-    assign Rm = Instruction[3:0];
-    assign shift_operand = Instruction[11:0];
-    assign signed_imm_24 = Instruction[23:0];
+    assign cond   = PC_in[31:28];
+    assign Mode   = PC_in[27:26];
+    assign imm    = PC_in[25];
+    assign opcode = PC_in[24:21];
+    assign S      = PC_in[20];
+
+    assign Rn = PC_in[19:16];
+    assign Rd = PC_in[15:12];
+    assign Rm = PC_in[3:0];
+
+    assign shift_operand = PC_in[11:0];
+    assign signed_imm_24 = PC_in[23:0];
 
     assign Dest = Rd;
     
@@ -85,7 +86,7 @@ module ID_Stage (
 
     assign src2mux = uncond_MEM_W_EN ? Rd : Rm;
      
-    RegisterFile regfile (.clk(clk), .rst(rst), .src_1(Rn), .src_2(src2mux), .Dest_WB(Dest_WB), .Result_WB(Result_WB), .writeBackEN(writeBackEN), .reg_out_1(Val_Rn), .reg_out_2(Val_Rm));
+    RegisterFile regfile (.clk(clk), .rst(rst), .src_1(Rn), .src_2(src2mux), .Dest_WB(Dest_WB), .Result_WB(Result_WB), .writeBackEN(WB_EN), .reg_out_1(Val_Rn), .reg_out_2(Val_Rm));
 
     assign Two_src = ~(imm | uncond_MEM_R_EN);
 
