@@ -21,7 +21,8 @@ module ID_Stage (
     output [3:0] EXE_CMD,
     output uncond_MEM_R_EN,
     output uncond_MEM_W_EN,
-    output [31 : 0] PC
+    output [31 : 0] PC,
+    input [31:0] Instruction,
 );
 
     assign PC = PC_in;
@@ -34,18 +35,16 @@ module ID_Stage (
     wire [3:0] Rd;
     wire [3:0] Rm;
 
-    assign cond   = PC_in[31:28];
-    assign Mode   = PC_in[27:26];
-    assign imm    = PC_in[25];
-    assign opcode = PC_in[24:21];
-    assign S      = PC_in[20];
-
-    assign Rn = PC_in[19:16];
-    assign Rd = PC_in[15:12];
-    assign Rm = PC_in[3:0];
-
-    assign shift_operand = PC_in[11:0];
-    assign signed_imm_24 = PC_in[23:0];
+    assign cond   = Instruction[31:28];
+    assign Mode   = Instruction[27:26];
+    assign imm    = Instruction[25];
+    assign opcode = Instruction[24:21];
+    assign S      = Instruction[20];
+    assign Rn = Instruction[19:16];
+    assign Rd = Instruction[15:12];
+    assign Rm = Instruction[3:0];
+    assign shift_operand = Instruction[11:0];
+    assign signed_imm_24 = Instruction[23:0];
 
     assign Dest = Rd;
     
