@@ -50,7 +50,7 @@ module ID_Stage (
     
     wire cond_out;
 
-    conditioncheck conditionmodule(.cond(cond), .SR(SR), .cond_out(cond_out));
+    condition_Check conditionmodule(.cond(cond), .SR(SR), .cond_out(cond_out));
 
     
     wire [8:0] controlout;
