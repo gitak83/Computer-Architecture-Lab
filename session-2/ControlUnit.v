@@ -1,4 +1,3 @@
-
 module ControlUnit(
     input S_in,
     input [3:0] Opcode,

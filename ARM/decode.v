@@ -14,6 +14,7 @@ module ID_Stage (
     wire [3:0] rotate_imm = PC_in[11:8];
     wire [7:0] immed_8 = PC_in[7:0];
     wire [3:0] Rm = PC_in[3:0];
+    wire [8:0] controlout;
 
     wire SR = 4'b0000;
     wire cond_out;
@@ -24,8 +25,26 @@ module ID_Stage (
     wire [8:0] allzero = 9'b0;
     wire [8:0] muxout;
 
+    ControlUnit controlmodule (
+    .S_in(S),
+    .Opcode(opcode),
+    .Mode(Mode),
+    .control_word(controlout),
+    .uncond_MEM_R_EN(uncond_MEM_R_EN),
+    .uncond_MEM_W_EN(uncond_MEM_W_EN)
+    );
+
+
     assign muxout = conditionresult ? controlout : allzero;
-    
+
+
+    wire WB_EN    = muxout[8];
+    wire MEM_R_EN = muxout[7];
+    wire MEM_W_EN = muxout[6];
+    wire B        = muxout[5];
+    wire S_out    = muxout[4];
+    wire [3:0] EXE_CMD = muxout[3:0];
+        
 
 
 endmodule
