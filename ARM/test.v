@@ -10,7 +10,7 @@ module ARM_tb;
     always #5 clk = ~clk;          // 10 ns clock
 
     initial begin
-        rst = 0;               // release reset, PC starts counting
+        #10 rst = 0;               // release reset, PC starts counting
         #200 $stop;
     end
 

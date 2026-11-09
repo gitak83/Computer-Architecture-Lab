@@ -24,7 +24,7 @@ module ARM(input clk, input rst);
 
     wire [3:0] SR = 4'b0;
 
-    IF_Stage IF (.clk(clk), .rst(rst), .freeze(1'b0), .Branch_taken(1'b0),
+    IF_Stage IF (.clk(clk), .rst(rst), .freeze(1'b0), .Branch_taken(EXE_B),
                  .BranchAddr(32'b0), .PC(IF_pc), .Instruction(IF_instruction));
 
     IF_Stage_Reg IF_reg (.clk(clk), .rst(rst), .freeze(1'b0), .flush(1'b0),
