@@ -22,21 +22,21 @@ module ARM(input clk, input rst);
     wire        EXE_WB_EN, EXE_MEM_R_EN, EXE_MEM_W_EN, EXE_B, EXE_S;
     wire [3:0]  EXE_EXE_CMD;
 
-    wire [31:0] EXE_ALU_res,
-    wire [31:0] EXE_Val_Rm_out,
-    wire [31:0] EXE_Dest,
-    wire EXE_O_WB_EN,
-    wire EXE_branch_address,
+    wire [31:0] EXE_ALU_res;
+    wire [31:0] EXE_Val_Rm_out;
+    wire [31:0] EXE_Dest;
+    wire EXE_O_WB_EN;
+    wire EXE_branch_address;
 
-    wire [31:0] MEM_ALU_res,
-    wire [31:0] MEM_Val_Rm,
-    wire [31:0] MEM_Dest,
-    wire MEM_WB_EN,
-    wire MEM_R_EN_in,
-    wire MEM_W_EN_in,
+    wire [31:0] MEM_ALU_res;
+    wire [31:0] MEM_Val_Rm;
+    wire [31:0] MEM_Dest;
+    wire MEM_WB_EN;
+    wire MEM_R_EN_in;
+    wire MEM_W_EN_in;
 
-    wire MEM_O_WB_EN,
-    wire MEM_branch_address,
+    wire MEM_O_WB_EN;
+    wire MEM_branch_address;
 
     wire [31:0] IF_EXE_BranchAddr;
 
