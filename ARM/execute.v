@@ -16,7 +16,6 @@ module EXE_Stage (
     output [31:0] ALU_res,
     output [31:0] Val_Rm,
     output [3:0] Dest,
-    output O_WB_EN,
     output [31 : 0] branch_address,
     output SR
 
