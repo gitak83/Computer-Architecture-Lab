@@ -23,7 +23,6 @@ module ARM(input clk, input rst);
     wire [3:0]  EXE_EXE_CMD;
 
     wire [31:0] EXE_ALU_res;
-    wire [31:0] EXE_Dest;
     wire EXE_O_WB_EN;
     wire EXE_branch_address;
 
@@ -110,7 +109,6 @@ module ARM(input clk, input rst);
 
 
         .ALU_Res(EXE_ALU_res),
-        .Dest(EXE_Dest),
         .branch_address(IF_EXE_BranchAddr) );
 
     EXE_Stage_Reg EXE_reg (
