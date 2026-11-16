@@ -106,6 +106,8 @@ module ARM(input clk, input rst);
         .Val_Rn(EXE_Val_Rn),
         .Val_Rm(EXE_Val_Rm),
         .shift_operand(EXE_shift_operand),
+        .imm(EXE_imm),
+        .signed_imm_24(EXE_signed_imm_24),
 
 
         .ALU_res(EXE_ALU_res),
