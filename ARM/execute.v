@@ -1,9 +1,29 @@
 module EXE_Stage (
     input clk, rst,
+    input c,
     input [31 : 0] PC_in,
-    output [31 : 0] PC
+    input WB_EN,
+    input MEM_R_EN,
+    input MEM_W_EN,
+    input [3:0] EXE_CMD,
+    input s,
+    input [31:0] Val_Rm,
+    input [11:0] shift_operand,
+    input imm,
+    input [23:0] signed_imm_24, 
+    
+    output [31:0] ALU_res,
+    output [31:0] Val_Rm,
+    output [3:0] Dest,
+    output O_WB_EN,
+    output [31 : 0] branch_address
 );
 
-    assign PC = PC_in;
+
+
+
+    wire [31:0] extended_signed_imm;
+    assign  extended_signed_imm = {{8{signed_imm_24[23]}}, signed_imm_24};
+    assign branch_address = extended_signed_imm + PC_in;
     
 endmodule
