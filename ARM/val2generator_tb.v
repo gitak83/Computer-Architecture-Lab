@@ -33,8 +33,34 @@ module Val2Generator_tb;
                         amount = 2 * (operand / 256);
                         for (bit_index = 0; bit_index < 8; bit_index = bit_index + 1)
                             expected[(bit_index + 32 - amount) % 32] = shift_operand[bit_index];
-                    end else
-                        expected = Val_Rm;
+                    end else if (shift_operand[4])
+                        expected = Val_Rm; // Unsupported register-controlled shifts.
+                    else begin
+                        // Bit-by-bit reference: independent of the DUT shifts.
+                        expected = 0;
+                        amount = shift_operand[11:7];
+                        case (shift_operand[6:5])
+                            2'b00: for (bit_index = 0; bit_index < 32; bit_index = bit_index + 1)
+                                if (bit_index >= amount)
+                                    expected[bit_index] = Val_Rm[bit_index - amount];
+                            2'b01: begin
+                                if (amount == 0) amount = 32;
+                                for (bit_index = 0; bit_index < 32; bit_index = bit_index + 1)
+                                    if (bit_index + amount < 32)
+                                        expected[bit_index] = Val_Rm[bit_index + amount];
+                            end
+                            2'b10: begin
+                                if (amount == 0) amount = 32;
+                                for (bit_index = 0; bit_index < 32; bit_index = bit_index + 1)
+                                    expected[bit_index] = (bit_index + amount < 32) ?
+                                        Val_Rm[bit_index + amount] : Val_Rm[31];
+                            end
+                            2'b11: begin
+                                for (bit_index = 0; bit_index < 32; bit_index = bit_index + 1)
+                                    expected[bit_index] = Val_Rm[(bit_index + amount) % 32];
+                            end
+                        endcase
+                    end
                     #1;
                     if (out_val !== expected) begin
                         $display("FAIL operand=%h mode=%b Rm=%h got=%h expected=%h",
