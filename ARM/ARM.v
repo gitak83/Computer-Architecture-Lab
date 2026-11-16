@@ -108,10 +108,11 @@ module ARM(input clk, input rst);
         .shift_operand(EXE_shift_operand),
         .imm(EXE_imm),
         .signed_imm_24(EXE_signed_imm_24),
-
-
+        
+        
         .ALU_res(EXE_ALU_res),
-        .branch_address(IF_EXE_BranchAddr) );
+        .branch_address(IF_EXE_BranchAddr),
+        .SR(EXE_ID_SR));
 
     EXE_Stage_Reg EXE_reg (
         .clk(clk), .rst(rst), 
