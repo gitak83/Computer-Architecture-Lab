@@ -1,7 +1,7 @@
 module status_register (
     input clk, rst,
     input [3:0] status_bits,
-    input S;
+    input S,
     output reg [3:0] SR
 );
 
