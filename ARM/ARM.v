@@ -78,4 +78,18 @@ module ARM(input clk, input rst);
         .SR(EXE_SR)
     );
 
+    EXE_Stage EXE (.clk(clk), .rst(rst),
+    .C(SR[2]),
+    .PC_in(EXE_pc),
+    .WB_EN(EXE_WB_EN), 
+    .MEM_R_EN(EXE_MEM_R_EN),
+    .MEM_W_EN(EXE_MEM_W_EN),
+    .EXE_CMD(EXE_EXE_CMD), 
+    .S(EXE_S),
+    .Val_Rn(EXE_Val_Rn),
+    .Val_Rm(EXE_Val_Rm), );
+
+    EXE_Stage_Reg EXE_reg ();
+
+
 endmodule

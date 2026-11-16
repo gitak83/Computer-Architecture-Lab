@@ -19,13 +19,6 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	WB_Stage_Reg
 
-} {} {}} C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/test.v {1 {vlog -work work -stats=none C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/test.v
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module ARM_tb
-
-Top level modules:
-	ARM_tb
-
 } {} {}} C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/memory.v {1 {vlog -work work -stats=none C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/memory.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module MEM_Stage
@@ -33,12 +26,12 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	MEM_Stage
 
-} {} {}} C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/decode_reg.v {1 {vlog -work work -stats=none C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/decode_reg.v
+} {} {}} C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/mux.v {1 {vlog -work work -stats=none C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/mux.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module ID_Stage_Reg
+-- Compiling module MUX
 
 Top level modules:
-	ID_Stage_Reg
+	MUX
 
 } {} {}} C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/dist_mem_gen_0.v {1 {vlog -work work -stats=none C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/dist_mem_gen_0.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
@@ -50,7 +43,7 @@ Top level modules:
 } {} {}} C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/pctest.v {0 {vlog -work work -stats=none C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/pctest.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module PC_tb
-** Error: C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/pctest.v(13): (vlog-2110) Illegal reference to net "inval".
+** Error: C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/pctest.v(13): LHS in procedural continuous assignment may not be a net: inval.
 
 } {4.0 5.0} {}} C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/write_back.v {1 {vlog -work work -stats=none C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/write_back.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
@@ -59,13 +52,6 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	WB_Stage
 
-} {} {}} C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/decode.v {1 {vlog -work work -stats=none C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/decode.v
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module ID_Stage
-
-Top level modules:
-	ID_Stage
-
 } {} {}} C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/incrementor.v {1 {vlog -work work -stats=none C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/incrementor.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module INC
@@ -73,26 +59,12 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	INC
 
-} {} {}} C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/fetch_reg.v {1 {vlog -work work -stats=none C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/fetch_reg.v
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module IF_Stage_Reg
-
-Top level modules:
-	IF_Stage_Reg
-
 } {} {}} C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/execute_reg.v {1 {vlog -work work -stats=none C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/execute_reg.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module MEM_Stage
 
 Top level modules:
 	MEM_Stage
-
-} {} {}} C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/fetch.v {1 {vlog -work work -stats=none C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/fetch.v
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module IF_Stage
-
-Top level modules:
-	IF_Stage
 
 } {} {}} C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/execute.v {1 {vlog -work work -stats=none C:/Users/sarag/Documents/University/Term9/Computer-Architecture-Lab/ARM/execute.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020

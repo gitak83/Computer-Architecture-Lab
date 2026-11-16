@@ -46,6 +46,7 @@ module Val2Generator_tb;
             end
         end
         $display("PASS: %0d checks", checks);
+        
         $finish;
     end
 endmodule
