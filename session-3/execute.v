@@ -16,14 +16,18 @@ module EXE_Stage (
     output [31:0] Val_Rm,
     output [3:0] Dest,
     output O_WB_EN,
-    output [31 : 0] branch_address
+    output [31 : 0] branch_address,
+    output SR
 );
 
 
-
-
+    wire [31:0] val2;
+    wire [3:0] stat_bits;
+    assign load_store = MEM_R_EN | MEM_W_EN;
+    Val2Generator val2gen (.Val_Rm(Val_Rm), .shift_operand(shift_operand), .imm(imm), .load_store(load_store), .out_val(val2));
     wire [31:0] extended_signed_imm;
     assign  extended_signed_imm = {{8{signed_imm_24[23]}}, signed_imm_24};
     assign branch_address = extended_signed_imm + PC_in;
-    
+    ALU alu(.EXE_CMD(EXE_CMD), .Val1(Val1), .Val2(val2), .c(c), ALU_res(ALU_res), status_bits(stat_bits));
+    status_register statreg(.clk(clk), .rst(rst), .status_bits(stat_bits), .S(S), .SR(SR));
 endmodule
