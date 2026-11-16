@@ -108,7 +108,7 @@ module ARM(input clk, input rst);
         .shift_operand(EXE_shift_operand),
 
 
-        .ALU_Res(EXE_ALU_res),
+        .ALU_res(EXE_ALU_res),
         .branch_address(IF_EXE_BranchAddr) );
 
     EXE_Stage_Reg EXE_reg (

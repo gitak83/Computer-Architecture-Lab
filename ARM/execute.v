@@ -29,7 +29,7 @@ module EXE_Stage (
     wire [31:0] extended_signed_imm;
     assign  extended_signed_imm = {{8{signed_imm_24[23]}}, signed_imm_24};
     assign branch_address = extended_signed_imm + PC_in;
-    ALU alu(.EXE_CMD(EXE_CMD), .Val1(Val_Rn), .Val2(val2), .c(C), ALU_res(ALU_res), status_bits(stat_bits));
+    ALU alu(.EXE_CMD(EXE_CMD), .Val1(Val_Rn), .Val2(val2), .C_in(C), .ALU_res(ALU_res), .status_bits(stat_bits));
     status_register statreg(.clk(clk), .rst(rst), .status_bits(stat_bits), .S(S), .SR(SR));
     
 endmodule

@@ -6,7 +6,7 @@ module status_register (
 );
 
     always @(negedge clk or posedge rst) begin
-        if (rst) status <= 4'b0;
+        if (rst) SR <= 4'b0;
         else if (S) SR <= status_bits;
     end
     

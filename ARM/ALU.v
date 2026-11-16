@@ -5,7 +5,6 @@ module ALU (
     input [31:0] Val2,
 
     input C_in,
-    input V_in,
 
     output reg [31:0] ALU_res,
     output [3:0] status_bits
@@ -18,7 +17,6 @@ module ALU (
 
     always @(*) begin
         C = C_in;
-        V = V_in;
         case (EXE_CMD)
             4'b0001:
                 ALU_res = Val2;
