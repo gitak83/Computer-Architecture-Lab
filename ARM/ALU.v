@@ -57,7 +57,10 @@ module ALU (
             4'b1000:
                 ALU_res = Val1 ^ Val2;
             default:
+            begin
                 ALU_res = 32'b0;
+                V = 1'b0; // not sure
+            end
         endcase
     end
 
