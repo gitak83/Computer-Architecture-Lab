@@ -14,7 +14,6 @@ module EXE_Stage (
     input [23:0] signed_imm_24, 
     
     output [31:0] ALU_res,
-    output [31:0] Val_Rm,
     output [3:0] Dest,
     output [31 : 0] branch_address,
     output SR
