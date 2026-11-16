@@ -11,7 +11,7 @@ module EXE_Stage_Reg (
     output reg MEM_W_EN_out,
     output reg [31:0] ALU_Res_out,
     output reg [31:0] Val_Rm_out,
-    output reg [3:0] Dest_out, 
+    output reg [3:0] Dest_out
 );
 
     always @(posedge clk or posedge rst) begin

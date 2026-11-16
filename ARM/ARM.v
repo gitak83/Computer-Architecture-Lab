@@ -23,7 +23,7 @@ module ARM(input clk, input rst);
     wire [3:0]  EXE_EXE_CMD;
 
     wire [31:0] EXE_ALU_res,
-    wire [31:0] EXE_Val_Rm,
+    wire [31:0] EXE_Val_Rm_out,
     wire [31:0] EXE_Dest,
     wire EXE_O_WB_EN,
     wire EXE_branch_address,
@@ -111,7 +111,7 @@ module ARM(input clk, input rst);
 
 
         .ALU_Res(EXE_ALU_res),
-        .Val_Rm(EXE_Val_Rm),
+        .Val_Rm(EXE_Val_Rm_out),
         .Dest(EXE_Dest),
         .branch_address(IF_EXE_BranchAddr) );
 
@@ -121,7 +121,7 @@ module ARM(input clk, input rst);
         .MEM_R_EN(EXE_MEM_R_EN),
         .MEM_W_EN(EXE_MEM_W_EN),
         .ALU_Res(EXE_ALU_res),
-        .Val_Rm(EXE_Val_Rm),
+        .Val_Rm(EXE_Val_Rm_out),
         .Dest(EXE_Dest),
 
         .WB_EN_out(MEM_WB_EN),
