@@ -116,7 +116,7 @@ module ARM(input clk, input rst);
         .branch_address(IF_EXE_BranchAddr) );
 
     EXE_Stage_Reg EXE_reg (
-        .clk(clk), .rst(rst), .flush(1'b0),
+        .clk(clk), .rst(rst), 
         .WB_EN(EXE_WB_EN),
         .MEM_R_EN(EXE_MEM_R_EN),
         .MEM_W_EN(EXE_MEM_W_EN),
