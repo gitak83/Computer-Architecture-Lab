@@ -28,7 +28,7 @@ module ARM(input clk, input rst);
 
     wire [31:0] MEM_ALU_res;
     wire [31:0] MEM_Val_Rm;
-    wire [31:0] MEM_Dest;
+    wire [3:0] MEM_Dest;
     wire MEM_WB_EN;
     wire MEM_R_EN_in;
     wire MEM_W_EN_in;
@@ -96,7 +96,7 @@ module ARM(input clk, input rst);
 
     EXE_Stage EXE (
         .clk(clk), .rst(rst),
-        .C(EXE_ID_SR[2]),
+        .C(EXE_SR[2]),
         .PC_in(EXE_pc),
         .WB_EN(EXE_WB_EN), 
         .MEM_R_EN(EXE_MEM_R_EN),

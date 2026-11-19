@@ -74,7 +74,7 @@ always @(*) begin
             if (Opcode == 4'b0100) begin
 
                 if (S_in == 1'b1) begin
-                    control_word = {1'b1, 1'b1, 1'b0, 1'b0, 1'b0, 4'b0010};
+                    control_word = {1'b1, 1'b1, 1'b0, 1'b0, S_in, 4'b0010};
                     uncond_MEM_R_EN = 1;
                 end
 

@@ -1,4 +1,6 @@
 work/
+exe_work/
+session3_work/
 *.mpf
 *.cr
 *.cr.*

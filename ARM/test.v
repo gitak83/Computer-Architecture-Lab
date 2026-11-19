@@ -7,11 +7,10 @@ module ARM_tb;
 
     ARM dut (.clk(clk), .rst(rst));
 
-    always #1 clk = ~clk;          // 10 ns clock
-
+    always #5 clk = ~clk;         
     initial begin
-        #5 rst = 0;               // release reset, PC starts counting
-        #800 $stop;
+        #12 rst = 0;              
+        #1000 $stop;
     end
 
 endmodule

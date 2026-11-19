@@ -67,7 +67,6 @@ module ID_Stage (
     wire [8:0] allzero = 9'b0;
     wire [8:0] muxout;
 
-    // we do not have hazard so no and gate.
     wire controlsel = cond_out;
 
     assign muxout = controlsel ? controlout : allzero;
@@ -85,7 +84,7 @@ module ID_Stage (
 
     assign src2mux = uncond_MEM_W_EN ? Rd : Rm;
      
-    RegisterFile regfile (.clk(clk), .rst(rst), .src_1(Rn), .src_2(src2mux), .Dest_WB(Dest_WB), .Result_WB(Result_WB), .writeBackEN(WB_EN), .reg_out_1(Val_Rn), .reg_out_2(Val_Rm));
+    RegisterFile regfile (.clk(clk), .rst(rst), .src_1(Rn), .src_2(src2mux), .Dest_WB(Dest_WB), .Result_WB(Result_WB), .writeBackEN(writeBackEN), .reg_out_1(Val_Rn), .reg_out_2(Val_Rm));
 
     assign Two_src = ~(imm | uncond_MEM_R_EN);
 

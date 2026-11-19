@@ -12,11 +12,11 @@ ProgramCounter pcreg(clk, rst, freeze, mux_out, pcoutval);
 
 wire [10:0] memin;
 
-assign memin = pcoutval[10:1];
+assign memin = pcoutval[10:0];
 
 dist_mem_gen_0 inst_mem(
-        .a(memin),      // input wire [10 : 0] a
-        .spo(Instruction)  // output wire [31 : 0] spo
+        .a(memin),    
+        .spo(Instruction)  
 );
 
 INC incrementor (pcoutval, PC);

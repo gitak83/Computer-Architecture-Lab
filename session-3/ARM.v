@@ -1,0 +1,135 @@
+module ARM(input clk, input rst);
+    wire [31:0] IF_pc, IF_instruction;
+    wire [31:0] ID_pc, ID_instruction;
+    wire [31:0] ID_pc_out;
+    wire [31:0] EXE_pc, MEM_pc, WB_pc;
+
+
+    wire [31:0] ID_Val_Rn, ID_Val_Rm;
+    wire        ID_imm, ID_Two_src;
+    wire [11:0] ID_shift_operand;
+    wire [23:0] ID_signed_imm_24;
+    wire [3:0]  ID_Dest, ID_src1, ID_src2;
+    wire        ID_WB_EN, ID_MEM_R_EN, ID_MEM_W_EN, ID_B, ID_S;
+    wire [3:0]  ID_EXE_CMD;
+    wire        ID_uncond_MEM_R_EN, ID_uncond_MEM_W_EN;
+
+    wire [31:0] EXE_Val_Rn, EXE_Val_Rm;
+    wire        EXE_imm, EXE_Two_src;
+    wire [11:0] EXE_shift_operand;
+    wire [23:0] EXE_signed_imm_24;
+    wire [3:0]  EXE_Dest, EXE_src1, EXE_src2, EXE_SR;
+    wire        EXE_WB_EN, EXE_MEM_R_EN, EXE_MEM_W_EN, EXE_B, EXE_S;
+    wire [3:0]  EXE_EXE_CMD;
+
+    wire [31:0] EXE_ALU_res;
+    wire EXE_O_WB_EN;
+    wire EXE_branch_address;
+
+    wire [31:0] MEM_ALU_res;
+    wire [31:0] MEM_Val_Rm;
+    wire [3:0] MEM_Dest;
+    wire MEM_WB_EN;
+    wire MEM_R_EN_in;
+    wire MEM_W_EN_in;
+
+    wire MEM_O_WB_EN;
+    wire MEM_branch_address;
+
+    wire [31:0] IF_EXE_BranchAddr;
+
+    wire [3:0] EXE_ID_SR;
+
+    IF_Stage IF (.clk(clk), .rst(rst), .freeze(1'b0), .Branch_taken(EXE_B),
+                 .BranchAddr(IF_EXE_BranchAddr), .PC(IF_pc), .Instruction(IF_instruction));
+
+    IF_Stage_Reg IF_reg (.clk(clk), .rst(rst), .freeze(1'b0), .flush(1'b0),
+                         .PC_in(IF_pc), .Instruction_in(IF_instruction),
+                         .PC(ID_pc), .Instruction(ID_instruction));
+
+    ID_Stage ID (
+        .clk(clk), .rst(rst),
+        .PC_in(ID_pc),
+        .Instruction(ID_instruction),
+        .SR(EXE_ID_SR),
+        .Hazard(1'b0),
+        .Dest_WB(4'b0), .Result_WB(32'b0), .writeBackEN(1'b0),
+        .Val_Rn(ID_Val_Rn), .Val_Rm(ID_Val_Rm),
+        .imm(ID_imm),
+        .shift_operand(ID_shift_operand),
+        .signed_imm_24(ID_signed_imm_24),
+        .Dest(ID_Dest),
+        .Two_src(ID_Two_src),
+        .WB_EN(ID_WB_EN), .MEM_R_EN(ID_MEM_R_EN), .MEM_W_EN(ID_MEM_W_EN),
+        .B(ID_B), .S_out(ID_S), .EXE_CMD(ID_EXE_CMD),
+        .uncond_MEM_R_EN(ID_uncond_MEM_R_EN),
+        .uncond_MEM_W_EN(ID_uncond_MEM_W_EN),
+        .PC(ID_pc_out)
+    );
+
+    ID_Stage_Reg ID_reg (
+        .clk(clk), .rst(rst), .flush(1'b0),
+        .PC_in(ID_pc_out),
+        .WB_EN_in(ID_WB_EN), .MEM_R_EN_in(ID_MEM_R_EN), .MEM_W_EN_in(ID_MEM_W_EN),
+        .B_in(ID_B), .S_in(ID_S), .EXE_CMD_in(ID_EXE_CMD),
+        .Val_Rn_in(ID_Val_Rn), .Val_Rm_in(ID_Val_Rm),
+        .imm_in(ID_imm),
+        .shift_operand_in(ID_shift_operand),
+        .signed_imm_24_in(ID_signed_imm_24),
+        .Dest_in(ID_Dest),
+        .src1_in(ID_src1), .src2_in(ID_src2),
+        .Two_src_in(ID_Two_src),
+        .SR_in(EXE_ID_SR),
+
+        .PC(EXE_pc),
+        .WB_EN(EXE_WB_EN), .MEM_R_EN(EXE_MEM_R_EN), .MEM_W_EN(EXE_MEM_W_EN),
+        .B(EXE_B), .S(EXE_S), .EXE_CMD(EXE_EXE_CMD),
+        .Val_Rn(EXE_Val_Rn), .Val_Rm(EXE_Val_Rm),
+        .imm(EXE_imm),
+        .shift_operand(EXE_shift_operand),
+        .signed_imm_24(EXE_signed_imm_24),
+        .Dest(EXE_Dest),
+        .src1(EXE_src1), .src2(EXE_src2),
+        .Two_src(EXE_Two_src),
+        .SR(EXE_SR)
+    );
+
+    EXE_Stage EXE (
+        .clk(clk), .rst(rst),
+        .C(EXE_SR[2]),
+        .PC_in(EXE_pc),
+        .WB_EN(EXE_WB_EN), 
+        .MEM_R_EN(EXE_MEM_R_EN),
+        .MEM_W_EN(EXE_MEM_W_EN),
+        .EXE_CMD(EXE_EXE_CMD), 
+        .S(EXE_S),
+        .Val_Rn(EXE_Val_Rn),
+        .Val_Rm(EXE_Val_Rm),
+        .shift_operand(EXE_shift_operand),
+        .imm(EXE_imm),
+        .signed_imm_24(EXE_signed_imm_24),
+        
+        
+        .ALU_res(EXE_ALU_res),
+        .branch_address(IF_EXE_BranchAddr),
+        .SR(EXE_ID_SR));
+
+    EXE_Stage_Reg EXE_reg (
+        .clk(clk), .rst(rst), 
+        .WB_EN(EXE_WB_EN),
+        .MEM_R_EN(EXE_MEM_R_EN),
+        .MEM_W_EN(EXE_MEM_W_EN),
+        .ALU_Res(EXE_ALU_res),
+        .Val_Rm(EXE_Val_Rm),
+        .Dest(EXE_Dest),
+
+        .WB_EN_out(MEM_WB_EN),
+        .MEM_R_EN_out(MEM_R_EN_in),
+        .MEM_W_EN_out(MEM_W_EN_in),
+        .ALU_Res_out(MEM_ALU_res),
+        .Val_Rm_out(MEM_Val_Rm),
+        .Dest_out(MEM_Dest)
+    );
+
+
+endmodule

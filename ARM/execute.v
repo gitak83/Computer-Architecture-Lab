@@ -24,6 +24,7 @@ module EXE_Stage (
 
     wire [31:0] val2;
     wire [3:0] stat_bits;
+    wire load_store;
     assign load_store = MEM_R_EN | MEM_W_EN;
     Val2Generator val2gen (.Val_Rm(Val_Rm), .shift_operand(shift_operand), .imm(imm), .load_store(load_store), .out_val(val2));
     wire [31:0] extended_signed_imm;

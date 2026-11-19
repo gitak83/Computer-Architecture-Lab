@@ -5,9 +5,9 @@ module condition_Check (
     output reg   cond_out
 );
 
-    wire N = SR[3];
-    wire Z = SR[2];
-    wire C = SR[1];
+    wire N = SR[1];
+    wire Z = SR[3];
+    wire C = SR[2];
     wire V = SR[0];
 
     always @(*) begin

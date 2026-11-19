@@ -5,7 +5,6 @@ module ALU (
     input [31:0] Val2,
 
     input C_in,
-    input V_in,
 
     output reg [31:0] ALU_res,
     output [3:0] status_bits
@@ -15,10 +14,13 @@ module ALU (
     reg V;
     wire N;
     wire Z;
+    wire [31:0] inverted_carry;
+
+    assign inverted_carry = ~{31'b0, C_in};
 
     always @(*) begin
-        C = C_in;
-        V = V_in;
+        C = 1'b0;
+        V = 1'b0;
         case (EXE_CMD)
             4'b0001:
                 ALU_res = Val2;
@@ -40,14 +42,14 @@ module ALU (
             end
             4'b0100: begin
                 {C, ALU_res} =
-                    {1'b0, Val1} + {1'b0, ~Val2} + 33'd1;
+                    {1'b0, Val1} - {1'b0, Val2};
 
                 V = (Val1[31] ^ Val2[31])
                          & (ALU_res[31] ^ Val1[31]);
             end
             4'b0101: begin
                 {C, ALU_res} =
-                    {1'b0, Val1} + {1'b0, ~Val2} + C_in;
+                    {1'b0, Val1} - {1'b0, Val2} - {1'b0, inverted_carry};
 
                 V = (Val1[31] ^ Val2[31])
                          & (ALU_res[31] ^ Val1[31]);
@@ -59,7 +61,9 @@ module ALU (
             4'b1000:
                 ALU_res = Val1 ^ Val2;
             default:
+            begin
                 ALU_res = 32'b0;
+            end
         endcase
     end
 
